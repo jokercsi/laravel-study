@@ -44,6 +44,19 @@ Route::get('/omikuji', [GameController::class, 'omikuji']);
 // モンティ・ホール問題
 Route::get('/montyhall', [GameController::class, 'montyhall']);
 
-// request
+// Request
 Route::get('/form', [RequestSampleController::class, 'form']);
 Route::get('/query-strings', [RequestSampleController::class, 'queryStrings']);
+
+
+/** 
+ * Route parameter (URL이름을 조작하기)
+ * example)
+ * http://localhost/users/2 
+ * http://localhost/products/mik/2022?page=1
+*/
+Route::get('/users/{id}', [RequestSampleController::class, 'profile']);
+Route::get('/products/{catagory}/{year}', [RequestSampleController::class, 'productsArchive']);
+
+
+
