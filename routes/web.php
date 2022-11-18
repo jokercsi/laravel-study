@@ -2,6 +2,8 @@
 // backslash이다
 use App\Http\Controllers\UtilityController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\RequestSampleController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,3 +43,7 @@ Route::get('/omikuji', [GameController::class, 'omikuji']);
 
 // モンティ・ホール問題
 Route::get('/montyhall', [GameController::class, 'montyhall']);
+
+// request
+Route::get('/form', [RequestSampleController::class, 'form']);
+Route::get('/query-strings', [RequestSampleController::class, 'queryStrings']);
