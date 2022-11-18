@@ -55,8 +55,11 @@ Route::get('/query-strings', [RequestSampleController::class, 'queryStrings']);
  * http://localhost/users/2 
  * http://localhost/products/mik/2022?page=1
 */
-Route::get('/users/{id}', [RequestSampleController::class, 'profile']);
+Route::get('/users/{id}', [RequestSampleController::class, 'profile'])->name('profile'); //이름 붙이기
 Route::get('/products/{catagory}/{year}', [RequestSampleController::class, 'productsArchive']);
 
+// 이름 붙인거 확인하기
+Route::get('/route-link', [RequestSampleController::class, 'routeLink']);
 
-
+Route::get('/login', [RequestSampleController::class, 'loginForm']);
+Route::post('/login', [RequestSampleController::class, 'login'])->name('login');
