@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log; # log 출력
+use Illuminate\Support\Facades\Storage; # 지우기 위해서 Storage를 임포트 해야됨
 
 class PhotoController extends Controller
 {
@@ -54,7 +55,7 @@ class PhotoController extends Controller
     public function show($fileName)
     {
         return view('photos.show', ['fileName' => $fileName]);
-        
+
     }
 
     /**
@@ -86,8 +87,9 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($fileName)
     {
-        //
+        Storage::disk('public')-> delete('photos/'. $fileName);
+        return to_route('photos.create')->with('success', 'is deleted');
     }
 }

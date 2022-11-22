@@ -78,4 +78,4 @@ Route::post('/hi-low', [HiLowController::class, 'result']);
 
 // 파일 업로드 관리
 // 업로드한 파일 보는 법 : show
-Route::resource('/photos', PhotoController::class)->only(['create','store','show']);
+Route::resource('/photos', PhotoController::class)->only(['create','store','show','destroy']);
