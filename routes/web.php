@@ -77,4 +77,5 @@ Route::get('/hi-low', [HiLowController::class, 'index'])->name('hi-low');
 Route::post('/hi-low', [HiLowController::class, 'result']);
 
 // 파일 업로드 관리
-Route::resource('/photos', PhotoController::class)->only(['create','store']);
+// 업로드한 파일 보는 법 : show
+Route::resource('/photos', PhotoController::class)->only(['create','store','show']);

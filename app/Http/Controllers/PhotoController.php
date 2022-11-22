@@ -39,8 +39,10 @@ class PhotoController extends Controller
         // 업로드 파일 저장하기
         $savedFilePath = $request->file('image')->store('photos','public');
         Log::debug($savedFilePath);  //업로드가 되면 업로드 화면으로 redirect
+        $fileName = pathinfo($savedFilePath, PATHINFO_BASENAME);
+        Log::debug($fileName);
 
-        return to_route('photos.create')->with('success', 'complete to upload');
+        return to_route('photos.show', ['photo' => $fileName])->with('success', 'complete to upload');
     }
 
     /**
@@ -49,9 +51,10 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($fileName)
     {
-        //
+        return view('photos.show', ['fileName' => $fileName]);
+        
     }
 
     /**
