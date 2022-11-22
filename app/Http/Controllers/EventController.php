@@ -36,9 +36,11 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+
+        $title = $request->get('title');
         #/home/user/laravel-study/storage/logs의 로그파일에 입력 내용을 보냄
-        Log::debug('event name'. $request->get('title'));
-        return to_route('events.create');
+        Log::debug('event name'. $title);
+        return to_route('events.create')->with('success', $title. '를 등록했습니다.');
     }
 
     /**

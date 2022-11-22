@@ -9,12 +9,16 @@ class HiLowController extends Controller
     public function index() {
         $dealersNumber = random_int(1, 12);
     
+        // session에 저장
+        session(['dealersNumber' => $dealersNumber]);
+
         return view('hi-low.index', ['dealersNumber' => $dealersNumber]);
     }
     
     public function result(Request $request) {
         // ディーラーの数字(hidden値で送信されたもの)を取得
-        $dealersNumber = $request->get('dealersNumber');
+        // $dealersNumber = $request->get('dealersNumber');
+        $dealersNumber = session('dealersNumber');        
     
         // プレイヤーの数字を1~12の中からランダムに取得
         $playersNumber = random_int(1, 12);
