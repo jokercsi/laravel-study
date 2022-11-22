@@ -5,7 +5,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\RequestSampleController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HiLowController;
-
+use App\Http\Controllers\PhotoController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -75,3 +75,6 @@ Route::resource('/events', EventController::class)->only(['index', 'create', 'st
 // ハイローゲーム
 Route::get('/hi-low', [HiLowController::class, 'index'])->name('hi-low');
 Route::post('/hi-low', [HiLowController::class, 'result']);
+
+// 파일 업로드 관리
+Route::resource('/photos', PhotoController::class)->only(['create','store']);
